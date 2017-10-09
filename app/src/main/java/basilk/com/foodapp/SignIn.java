@@ -1,5 +1,6 @@
 package basilk.com.foodapp;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -13,7 +14,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import basilk.com.foodapp.model.common;
 import basilk.com.foodapp.model.user;
+
+import static basilk.com.foodapp.model.common.currentuser;
 
 public class SignIn extends AppCompatActivity {
 
@@ -43,6 +47,9 @@ public class SignIn extends AppCompatActivity {
 
                             if (userobj.getPassword().equals(passwordTxt.getText().toString())) {
                                 Toast.makeText(SignIn.this, "Success", Toast.LENGTH_LONG).show();
+                                Intent homeintent=new Intent(SignIn.this,home.class);
+                                common.currentuser=userobj;
+                                startActivity(homeintent);
                             }
                             else
                             {
